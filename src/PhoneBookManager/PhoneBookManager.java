@@ -82,20 +82,22 @@ public class PhoneBookManager extends Phone implements Iphone{
 
     @Override
     public void insertPhone(Contact contact) {
-       contaclist.add(contact);
-       ReadWriteFile.WriteFile(contaclist);
+        List<Contact> contaclist1 = ReadWriteFile.readFile();
+       contaclist1.add(contact);
+       ReadWriteFile.WriteFile(contaclist1);
     }
 
     @Override
     public void removePhone(String name) {
+        List<Contact> contaclist1 = ReadWriteFile.readFile();
         int index=0;
-        for (int i=0; i<contaclist.size();i++){
-            if (name == contaclist.get(i).getName()){
+        for (int i=0; i<contaclist1.size();i++){
+            if (name == contaclist1.get(i).getName()){
                 index=i;
                 System.out.println(" Da tim thay ten can xoa");
             }
-        } contaclist.remove(index);
-        ReadWriteFile.WriteFile(contaclist);
+        } contaclist1.remove(index);
+        ReadWriteFile.WriteFile(contaclist1);
     }
 
     @Override
