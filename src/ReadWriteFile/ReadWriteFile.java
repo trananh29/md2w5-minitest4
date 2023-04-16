@@ -20,7 +20,7 @@ public class ReadWriteFile {
     public static void WriteFile(List<Contact> contaclist) {
             File file = new File("./storage/listContact.dat");
             try {
-                OutputStream os= new FileOutputStream(file,true);
+                OutputStream os= new FileOutputStream(file);
                 ObjectOutputStream oss = new ObjectOutputStream(os);
                 oss.writeObject(contaclist);
                 oss.close();
@@ -50,13 +50,13 @@ public static List<Contact> readFile(){
         }
 return contactslist1;
 }
-public static void main(String[] args) {
-    Contact newcontac1 = new Contact();
-    List<Contact> contactslist1= new ArrayList<>();
-    contactslist1.add(newcontac1);
-    ReadWriteFile.WriteFile(contactslist1);
-  List<Contact> c1= ReadWriteFile.readFile();
-  System.out.println(c1);
+// public static void main(String[] args) {
+//     Contact newcontac1 = new Contact();
+//     List<Contact> contactslist1= new ArrayList<>();
+//     contactslist1.add(newcontac1);
+//     ReadWriteFile.WriteFile(contactslist1);
+//   List<Contact> c1= ReadWriteFile.readFile();
+//   System.out.println(c1);
 
-}
+// }
 }

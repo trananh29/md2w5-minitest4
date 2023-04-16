@@ -1,10 +1,13 @@
 package Contact;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Scanner;
 
 public class Type implements Serializable {
     public int id ;
     public String name;
+    HashMap <String, Integer> typeHashMap = new HashMap<>();
 
     public Type() {
             this.id=1;
@@ -42,6 +45,24 @@ public class Type implements Serializable {
             ", name='" + getName() + "'" +
             "}";
     }
+
+    public int compareTo(Type type) {
+        return this.compareTo(type);
+    }
+    public Type input(){
+        Scanner sci= new Scanner(System.in);
+        System.out.println("input id: ");
+        int id= sci.nextInt();
+        Scanner sci2= new Scanner(System.in);
+        System.out.println("input type name: ");
+        String name= sci2.nextLine();
+        Type type= new Type(id, name);
+        typeHashMap.put(name, id);
+        return type;
+
+    }
+
+
 
 
 }

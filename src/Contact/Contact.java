@@ -1,6 +1,7 @@
 package Contact;
 
 import java.io.Serializable;
+import java.util.Scanner;
 
 public class Contact implements Serializable{
     protected String name;
@@ -53,6 +54,13 @@ public class Contact implements Serializable{
             ", phoneNumber='" + getPhoneNumber() + "'" +
             ", type='" + getType() + "'" +
             "}";
+    }
+    public void input(){
+        Scanner sc= new Scanner(System.in);
+        System.out.println("Nhap ten: "); 
+        this.name = sc.nextLine();
+        this.phoneNumber= sc.nextLine();
+        this.type=type.input();
     }
 
 }
