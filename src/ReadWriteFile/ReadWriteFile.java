@@ -20,7 +20,7 @@ public class ReadWriteFile {
     public static void WriteFile(List<Contact> contaclist) {
             File file = new File("./storage/listContact.dat");
             try {
-                OutputStream os= new FileOutputStream(file);
+                OutputStream os= new FileOutputStream(file,true);
                 ObjectOutputStream oss = new ObjectOutputStream(os);
                 oss.writeObject(contaclist);
                 oss.close();
