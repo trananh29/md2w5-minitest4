@@ -1,6 +1,8 @@
 package Phone;
 
+import Contact.Contact;
+
 public interface Iphone {
-    void searchIphone(String name);
+    Contact searchIphone(String name);
     void sortIphone();
 }
