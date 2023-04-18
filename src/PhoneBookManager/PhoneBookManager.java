@@ -1,6 +1,7 @@
 package PhoneBookManager;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 
@@ -69,10 +70,11 @@ public class PhoneBookManager extends Phone implements Iphone{
 
                 @Override
                 public int compare(Contact o1, Contact o2) {
-                  return o1.getType().compareTo(o2.getType());
+                  return o1.getType().getName().compareToIgnoreCase(o2.getType().getName());
                 }
                 
             });
+            
             for (int j=0;j<contaclist1.size();j++){
                 System.out.println(contaclist1.get(j)+ "\n");
              } 
@@ -91,12 +93,16 @@ public class PhoneBookManager extends Phone implements Iphone{
     public void removePhone(String name) {
         List<Contact> contaclist1 = ReadWriteFile.readFile();
         int index=0;
+        boolean check = false;
         for (int i=0; i<contaclist1.size();i++){
             if (name == contaclist1.get(i).getName()){
                 index=i;
-                System.out.println(" Da tim thay ten can xoa");
+                // System.out.println(" Da tim thay ten can xoa");
+                check= true;
             }
         } contaclist1.remove(index);
+        if (check) {System.out.println(" Da tim thay ten can xoa\n");}
+        else {System.out.println(" KO tim thay ten can xoa\n");}
         ReadWriteFile.WriteFile(contaclist1);
     }
 
@@ -104,17 +110,31 @@ public class PhoneBookManager extends Phone implements Iphone{
     public void updatePhone(String name, String newPhone) {
         
     }
+    public int getIndexByName(String name) {
 
+        int index=-1;
+        for (Contact contact : contaclist) {
+            if (contact.getName().equals(name)) {
+               index = contaclist.indexOf(contact);
+            }
+            
+        } return index;
+    }
 
     
     public static void main(String[] args) {
         PhoneBookManager pbm= new PhoneBookManager();
-        Contact px1= new Contact();
+    //    pbm.insertPhone(new Contact("Anh", "0123", new Type(1,"Anh")));
+    //    pbm.insertPhone(new Contact("Anh", "0123", new Type(1,"Em")));
+    //    pbm.insertPhone(new Contact("Anh", "0123", new Type(1,"Bac")));
+    //    pbm.insertPhone(new Contact("Anh", "0123", new Type(1,"Sort")));
 
-        pbm.insertPhone(px1);
+    
         pbm.display(null);
-        pbm.removePhone("Anh");
-        pbm.display(null);
-       
+
+
+
+
+   
     }
 }
